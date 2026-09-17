@@ -16,7 +16,8 @@
     "scan:secrets": "node scripts/scan-secrets.js",
     "headless": "node src/index.js",
     "start": "node src/index.js",
-    "postinstall": "node scripts/prepare-electron.js"
+    "postinstall": "node scripts/prepare-electron.js",
+    "prepare:runtime": "node scripts/prepare-runtime.js"
   },
   "dependencies": {
     "opusscript": "0.1.1",
