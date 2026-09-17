@@ -1,5 +1,6 @@
 import { randomInt, randomUUID } from 'node:crypto';
 import { EventEmitter } from 'node:events';
+import { ChannelType } from 'discord.js';
 import {
   AudioPlayerStatus, NoSubscriberBehavior, StreamType, VoiceConnectionStatus,
   createAudioPlayer, createAudioResource, entersState, joinVoiceChannel,
@@ -144,7 +145,7 @@ export class GuildPlayer extends EventEmitter {
 
   async enqueueDesktop(query, channel) {
     return this.enqueueRequest(query, () => {
-      if (!channel?.isVoiceBased?.() || channel.isStageVoice()) throw new UserError('Select a regular voice channel.');
+      if (channel?.type !== ChannelType.GuildVoice) throw new UserError('Select a regular voice channel.');
       if (this.channelId && this.channelId !== channel.id) throw new UserError('Disconnect before selecting a different voice channel.');
       return channel;
     }, { requesterName: 'Desktop' });

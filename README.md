@@ -29,7 +29,7 @@ Users are responsible for complying with the terms of service of the services th
 
 ## Install on Windows
 
-1. Download **`Dubplate-Setup-0.1.0.exe`** from this repository's **Releases** page. Choose the Windows x64 installer.
+1. Download **`Dubplate-Setup-0.1.1.exe`** from this repository's **Releases** page. Choose the Windows x64 installer.
 2. Run the installer. Dubplate installs for your Windows account without administrator rights and adds a Start menu shortcut.
 3. Open **Dubplate** and follow setup. Internet access is needed for Discord and initial playback-tool downloads.
 
@@ -136,7 +136,7 @@ npm run scan:secrets
 npm run dist
 ```
 
-The Windows x64 NSIS installer is **`dist/Dubplate-Setup-0.1.0.exe`**. Packaging keeps native DAVE binaries outside ASAR as needed. FFmpeg decodes to 48 kHz stereo signed 16-bit PCM over a pipe; the voice library applies inline volume and encodes Opus once. The pipe-only FFmpeg protocol whitelist, playback watchdog, seek support, and process-tree cleanup are retained.
+The Windows x64 NSIS installer is **`dist/Dubplate-Setup-0.1.1.exe`**. Packaging keeps native DAVE binaries outside ASAR as needed. FFmpeg decodes to 48 kHz stereo signed 16-bit PCM over a pipe; the voice library applies inline volume and encodes Opus once. The pipe-only FFmpeg protocol whitelist, playback watchdog, seek support, and process-tree cleanup are retained.
 
 Tests cover playback behavior, host allowlisting, settings validation/migration, IPC validation, checksums, redaction, and renderer security. The default CI and release build need no Discord tokens or repository secrets. Optional Azure signing uses separately configured credentials; see [Windows signing](docs/signing.md). Passing tests do not establish live Discord playback: authenticated slash commands, audible remote voice output, live DAVE negotiation, and source-site availability need a real bot/server. Release verification notes should identify which installer and packaged smoke checks were actually run.
 

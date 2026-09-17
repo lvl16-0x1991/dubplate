@@ -1,6 +1,6 @@
 {
   "name": "dubplate-discord-music",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "type": "module",
   "description": "A private Discord music player for your Windows desktop",

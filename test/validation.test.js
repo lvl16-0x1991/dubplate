@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { ChannelType } from 'discord.js';
 import { loadConfig } from '../src/util/config.js';
 import { callerChannel, httpUrl, normalizeQuery } from '../src/util/validation.js';
 import { duration, queueEmbed, safeText } from '../src/util/format.js';
@@ -64,7 +65,7 @@ test('control requires voice presence and the current bot channel', () => {
   const cache = new Map();
   const interaction = { guild: { voiceStates: { cache } }, user: { id: 'u' } };
   assert.throws(() => callerChannel(interaction), /Join a voice channel/);
-  const channel = { id: 'a', isStageVoice: () => false };
+  const channel = { id: 'a', type: ChannelType.GuildVoice };
   cache.set('u', { channel });
   assert.equal(callerChannel(interaction, { channelId: 'a' }), channel);
   assert.throws(() => callerChannel(interaction, { channelId: 'b' }), /same voice channel/);

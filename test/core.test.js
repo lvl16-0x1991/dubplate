@@ -12,7 +12,7 @@ const config = { token: 'a-private-test-token', guildId: '123456789012345678' };
 function runningCore() {
   const core = new BotCore(config);
   const channel = { id: '234567890123456789', name: 'Listening room', type: ChannelType.GuildVoice, position: 1,
-    permissionsFor: () => ({ has: () => true }), isVoiceBased: () => true, isStageVoice: () => false };
+    permissionsFor: () => ({ has: () => true }), isVoiceBased: () => true };
   const guild = { id: config.guildId, name: 'Test server', members: { me: {} },
     voiceStates: { cache: new Collection([['human', { id: 'human', channelId: channel.id, channel, member: { user: { bot: false } } }]]) },
     channels: { cache: new Collection([[channel.id, channel]]) } };

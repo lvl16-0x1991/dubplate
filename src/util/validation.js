@@ -1,4 +1,5 @@
 import { isIP } from 'node:net';
+import { ChannelType } from 'discord.js';
 
 export class UserError extends Error {}
 
@@ -72,7 +73,7 @@ export function callerChannel(interaction, player) {
   const state = interaction.guild.voiceStates.cache.get(interaction.user.id);
   const channel = state?.channel;
   if (!channel) throw new UserError('Join a voice channel first.');
-  if (channel.isStageVoice()) throw new UserError('Use a regular voice channel; stage channels are not supported.');
+  if (channel.type === ChannelType.GuildStageVoice) throw new UserError('Use a regular voice channel; stage channels are not supported.');
   if (player?.channelId && player.channelId !== channel.id) {
     throw new UserError('Join the same voice channel as the bot to control playback.');
   }

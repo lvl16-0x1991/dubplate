@@ -15,7 +15,7 @@ const required = [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.Connect, 
 function fixture(permissions = required) {
   const channel = { id: '234567890123456789', name: 'Listening room', type: ChannelType.GuildVoice, position: 0,
     userLimit: 0, members: new Collection(), permissionsFor: () => new PermissionsBitField(permissions),
-    isVoiceBased: () => true, isStageVoice: () => false };
+    isVoiceBased: () => true };
   const guild = { id: '123456789012345678', name: 'Test server', icon: null, members: { me: {} },
     voiceStates: { cache: new Collection([['human', { id: 'human', channelId: channel.id, member: { user: { bot: false } } }]]) },
     channels: { cache: new Collection([[channel.id, channel]]) }, client: { user: { id: 'bot' } } };
