@@ -15,7 +15,8 @@
     "test": "node --test --test-concurrency=1 test/*.test.js",
     "scan:secrets": "node scripts/scan-secrets.js",
     "headless": "node src/index.js",
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "postinstall": "node scripts/prepare-electron.js"
   },
   "dependencies": {
     "opusscript": "0.1.1",
@@ -23,5 +24,8 @@
     "discord.js": "14.27.0",
     "@discordjs/voice": "0.19.2",
     "dotenv": "17.4.2"
+  },
+  "devDependencies": {
+    "electron": "44.4.1"
   }
 }
