@@ -1,0 +1,33 @@
+body:has(dialog[open]) { overflow: hidden; }
+.setup-instructions { margin: 0 0 24px; }
+.setup-instructions li { padding-left: 8px; margin: 18px 0; }
+.setup-dedicated { color: var(--muted); font-size: 10px; line-height: 1.7; margin: 22px 0 17px; }
+.setup-dedicated strong { color: #cec5e0; font-weight: 550; }
+.setup-details { border-top: 1px solid var(--line); padding: 11px 0; font-size: 11px; color: var(--muted); }
+.setup-details summary { cursor: pointer; color: #c7bfd5; font-size: 11px; padding: 3px 0; }
+.setup-details summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 3px; }
+.setup-details p { font-size: 11px; line-height: 1.7; margin: 11px 0; }
+.setup-details .field { margin-top: 14px; }
+.setup-tools-status { display: flex; align-items: center; gap: 9px; margin-top: 22px; color: var(--muted); font-size: 10px; line-height: 1.6; }
+.setup-tools-status svg { width: 14px; height: 14px; color: var(--accent); }
+.setup-tools-status.failed { color: var(--danger); }
+.setup-tools-status.failed svg { color: var(--danger); }
+.setup-tools-status.ready { color: #beb0d4; }
+.setup-footer { margin-top: 15px; }
+.setup-tools-recovery { margin-top: 10px; padding: 12px; background: #2a2024; border: 1px solid #64444b; border-radius: 7px; }
+.setup-tools-recovery strong { color: var(--danger); font-size: 11px; }
+.setup-tools-recovery p { color: #d2bdc2; font-size: 10px; line-height: 1.6; margin: 6px 0 10px; overflow-wrap: anywhere; }
+.setup-tools-recovery .button-row { gap: 6px; }
+.setup-tools-recovery .button { font-size: 10px; min-height: 30px; }
+.setup-waiting { display: flex; gap: 10px; align-items: center; margin: 24px 0; color: var(--muted); font-size: 11px; line-height: 1.7; }
+.loading-dot { display: inline-block; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: pulse 1.5s ease-in-out infinite; }
+.voice-test-field { margin-top: 24px; }
+.voice-test-panel { margin-top: 20px; }
+.setup-step > .muted + .panel { margin-top: 22px; }
+#setup-server { margin-bottom: 23px; }
+#setup-binary-progress { margin-top: 8px; font-size: 10px; }
+#setup-binary-progress progress { height: 4px; }
+#setup-token[aria-invalid=true] { border-color: var(--danger); }
+.button.busy::after { content: ""; width: 11px; height: 11px; border: 1.5px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: setup-spin .8s linear infinite; }
+@keyframes setup-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .loading-dot, .button.busy::after { animation: none; } }
