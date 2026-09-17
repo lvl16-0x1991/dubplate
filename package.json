@@ -7,27 +7,28 @@
   "productName": "Dubplate",
   "author": "Ilia Zharnikov",
   "license": "MIT",
-  "engines": {
-    "node": ">=22.12.0"
-  },
+  "main": "desktop/main.js",
+  "engines": { "node": ">=22.12.0" },
   "scripts": {
+    "postinstall": "node scripts/prepare-electron.js",
+    "start": "electron .",
+    "headless": "node src/index.js",
     "check": "node scripts/check.js",
     "test": "node --test --test-concurrency=1 test/*.test.js",
-    "scan:secrets": "node scripts/scan-secrets.js",
-    "headless": "node src/index.js",
-    "start": "electron .",
-    "postinstall": "node scripts/prepare-electron.js",
-    "prepare:runtime": "node scripts/prepare-runtime.js"
+    "prepare:runtime": "node scripts/prepare-runtime.js",
+    "dist": "npm run prepare:runtime && electron-builder --win nsis --x64",
+    "pack": "npm run prepare:runtime && electron-builder --win --dir --x64",
+    "scan:secrets": "node scripts/scan-secrets.js"
   },
   "dependencies": {
-    "opusscript": "0.1.1",
+    "@discordjs/voice": "0.19.2",
     "@snazzah/davey": "0.1.12",
     "discord.js": "14.27.0",
-    "@discordjs/voice": "0.19.2",
-    "dotenv": "17.4.2"
+    "dotenv": "17.4.2",
+    "opusscript": "0.1.1"
   },
   "devDependencies": {
-    "electron": "44.4.1"
-  },
-  "main": "desktop/main.js"
+    "electron": "44.4.1",
+    "electron-builder": "26.15.3"
+  }
 }

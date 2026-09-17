@@ -1,0 +1,47 @@
+appId: io.github.nevskiyinnity.dubplate
+productName: Dubplate
+directories:
+  output: dist
+  buildResources: build
+files:
+  - desktop/**
+  - src/**
+  - build/icon.png
+  - build/voice-test.wav
+  - package.json
+  - LICENSE
+  - README.md
+  - '!**/*.test.js'
+  - '!**/.env*'
+asar: true
+asarUnpack:
+  - node_modules/@snazzah/**/*.node
+  - node_modules/@snazzah/**/package.json
+extraResources:
+  - from: build/runtime
+    to: runtime
+    filter:
+      - node.exe
+      - runtime.json
+      - LICENSE.txt
+npmRebuild: false
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+  icon: build/icon.ico
+  signExecutable: false
+  artifactName: Dubplate-Setup-${version}.${ext}
+nsis:
+  oneClick: false
+  perMachine: false
+  allowElevation: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: false
+  createStartMenuShortcut: true
+  shortcutName: Dubplate
+  uninstallDisplayName: Dubplate
+  include: build/installer.nsh
+  deleteAppDataOnUninstall: false
+  runAfterFinish: false
+publish: null
